@@ -260,29 +260,19 @@
             const isAndroid = /android/.test(userAgent);
             
             if (isIOS) {
-                // iOS 设备：尝试打开设置应用的蜂窝网络页面
-                const settingsURL = 'prefs:root=MOBILE_DATA_SETTINGS_ID';
-                window.location.href = settingsURL;
-                
-                // 备用方案：复制到剪贴板
-                navigator.clipboard.writeText(code).then(() => {
-                    alert('激活码已复制到剪贴板！\n请前往：设置 > 蜂窝网络 > 添加 eSIM > 使用二维码 > 手动输入详细信息');
-                }).catch(() => {
-                    alert('请手动复制激活码：\n' + code + '\n\n然后前往：设置 > 蜂窝网络 > 添加 eSIM');
-                });
+                // iOS 设备：使用苹果官方 eSIM 安装链接
+                const encodedCode = encodeURIComponent(code);
+                const appleURL = `https://esimsetup.apple.com/esim_qrcode_provisioning?carddata=${encodedCode}`;
+                window.location.href = appleURL;
             } else if (isAndroid) {
-                // Android 设备：尝试打开设置
-                const intent = 'intent://settings/network#Intent;scheme=android-app;package=com.android.settings;end';
-                window.location.href = intent;
-                
-                // 备用方案：复制到剪贴板
+                // Android 设备：复制到剪贴板并提供指引
                 navigator.clipboard.writeText(code).then(() => {
-                    alert('激活码已复制到剪贴板！\n请前往：设置 > 网络和互联网 > SIM 卡 > 添加 eSIM');
+                    alert('激活码已复制到剪贴板！\n请前往：设置 > 网络和互联网 > SIM 卡 > 添加 eSIM > 扫描运营商二维码 > 需要帮助？> 手动输入');
                 }).catch(() => {
                     alert('请手动复制激活码：\n' + code + '\n\n然后前往：设置 > 网络和互联网 > SIM 卡 > 添加 eSIM');
                 });
             } else {
-                // 桌面设备：只复制到剪贴板
+                // 桌面设备：复制到剪贴板
                 navigator.clipboard.writeText(code).then(() => {
                     alert('激活码已复制到剪贴板！\n请在支持 eSIM 的设备上使用此激活码。');
                 }).catch(() => {
