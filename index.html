@@ -166,6 +166,99 @@
             background: linear-gradient(135deg, #222, #555);
             transform: translateY(-1px);
         }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px 10px;
+            }
+            
+            h1 {
+                font-size: 24px !important;
+                margin-bottom: 20px !important;
+            }
+            
+            .privacy-notice {
+                padding: 12px;
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+            
+            textarea {
+                min-height: 100px;
+                padding: 12px;
+                font-size: 14px;
+            }
+            
+            button {
+                padding: 12px 20px;
+                font-size: 14px;
+                margin: 3px;
+            }
+            
+            .qr-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            
+            .qr-item {
+                padding: 15px;
+                margin: 0 5px;
+            }
+            
+            .qr-number {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+                top: 8px;
+                left: 8px;
+            }
+            
+            .qr-text {
+                font-size: 10px;
+                padding: 8px;
+                margin-top: 12px;
+            }
+            
+            .install-btn {
+                padding: 8px 16px;
+                font-size: 11px;
+                margin-top: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 5px;
+            }
+            
+            h1 {
+                font-size: 20px !important;
+            }
+            
+            .privacy-notice {
+                padding: 10px;
+                font-size: 12px;
+            }
+            
+            textarea {
+                min-height: 80px;
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            button {
+                padding: 10px 16px;
+                font-size: 13px;
+                width: 100%;
+                margin: 2px 0;
+            }
+            
+            .qr-item {
+                padding: 12px;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
